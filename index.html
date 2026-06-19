@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>Costa Rica · Carnet de traversée · Été 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  color-scheme: light only;
+  --ink:#14241c;            /* near-black green */
+  --paper:#fbf9f4;          /* warm off-white */
+  --paper2:#f4f0e7;         /* recessed panels */
+  --line:#e4ddcf;           /* hairlines on paper */
+  --text:#1f2a23;
+  --muted:#6f6256;          /* warm grey */
+  --gold:#c9a24b;           /* the connecting thread */
+  --gold-deep:#a8842f;
+  --rail:28px;   /* rail center, measured from .wrap inner-left */
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light only;background:#fbf9f4}
+body{
+  margin:0; background:var(--paper); color:var(--text);
+  font-family:'Newsreader',Georgia,serif; font-size:18px; line-height:1.62;
+  font-weight:420; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+b,strong{font-weight:600;color:var(--ink)}
+a{color:var(--gold-deep);text-underline-offset:2px}
+
+/* utility face for data/labels */
+.kicker,.hs-l,.wx-l,.day-n,.day-tag,.opt-p,.b-row span:last-child,.route thead td,.foot-sub,.etape-k,.sec-k,.opts-h,.lodge-l,.u-n,.prac-chev,.leg-txt{
+  font-family:'Public Sans',system-ui,sans-serif;
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative; background:var(--ink); color:#f3efe6;
+  padding:64px 26px 0; overflow:hidden;
+}
+.hero-grain{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero-eyebrow{
+  font-family:'Public Sans',sans-serif; font-size:.66rem; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:20px;
+}
+.hero h1{
+  font-family:'Fraunces',serif; font-weight:600; font-size:3.7rem; line-height:.96;
+  letter-spacing:-.02em; margin:0 0 6px; color:#fff;
+}
+.hero h1 .pura{
+  display:block; font-style:italic; font-weight:400; font-size:.66em;
+  color:var(--gold); letter-spacing:0; margin-top:6px;
+}
+.hero-sub{
+  font-size:1.06rem; line-height:1.55; color:#e2e8e1; max-width:34ch;
+  margin:22px 0 30px; font-weight:400;
+}
+.hero-dates{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family:'Public Sans',sans-serif; font-size:.8rem; letter-spacing:.04em;
+  color:#e8e0cf; border:1px solid rgba(201,162,75,.4); border-radius:40px;
+  padding:9px 18px; margin-bottom:38px;
+}
+.hero-dates .dash{width:22px;height:1px;background:var(--gold);display:inline-block}
+
+/* route map svg */
+.hero-map{margin:0 -26px;display:block;width:calc(100% + 52px)}
+
+/* hero stats strip */
+.hero-stats{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.hs{padding:18px 8px 22px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.hs:last-child{border-right:none}
+.hs-n{font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;color:#fff;line-height:1}
+.hs-l{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:7px;font-weight:600}
+
+/* ============ LAYOUT WRAP + THREAD ============ */
+.wrap{position:relative;max-width:680px;margin:0 auto;padding:0 0 10px}
+.thread{position:absolute;left:var(--rail);top:14px;bottom:34px;width:2px;margin-left:-1px;background:var(--gold);opacity:.30;z-index:0}
+.thread::after{content:"";position:absolute;left:-4px;bottom:-4px;width:10px;height:10px;border-radius:50%;background:var(--gold);opacity:.9}
+/* content sits to the right of the thread */
+.block,.etape{position:relative;z-index:1}
+.block{padding:38px 18px 6px 52px}
+
+.kicker{
+  font-size:.66rem; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold-deep); font-weight:600; margin-bottom:18px;
+  position:relative;
+}
+.block>.kicker::before{content:"";position:absolute;left:calc(var(--rail) - 52px - 5px);top:1px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--paper);z-index:2}
+
+/* ============ STORY ============ */
+.story p{margin:0 0 16px;font-size:1.12rem;line-height:1.72;color:#222c26;font-weight:450}
+.story p:first-child::first-letter{
+  font-family:'Fraunces',serif; font-weight:600; float:left; font-size:3.5em;
+  line-height:.72; padding:8px 12px 0 0; color:var(--gold-deep);
+}
+.story-close{
+  font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+  font-size:1.18rem; line-height:1.5; color:var(--ink);
+  border-top:1px solid var(--line); padding-top:18px; margin-top:6px;
+}
+
+/* ============ WHY pros/cons ============ */
+.why-intro{font-size:1rem;color:#4f463b;margin:0 0 22px;font-style:italic}
+.why-grid{display:grid;gap:14px}
+.why-card{border-radius:12px;padding:18px 18px 8px;border:1px solid var(--line);background:#fff}
+.why-card-h{font-family:'Public Sans',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.why-card.pro{border-left:3px solid #4a8c5c}
+.why-card.con{border-left:3px solid #c98a3a}
+.why-card.pro .why-card-h{color:#2d5a3d}
+.why-card.con .why-card-h{color:#a8842f}
+.why-card ul{list-style:none;margin:0;padding:0}
+.why-card li{font-size:.92rem;line-height:1.5;padding:0 0 12px 20px;position:relative;color:#3a4640}
+.why-card li b{display:block;margin-bottom:1px}
+.why-card.pro li::before{content:"";position:absolute;left:2px;top:.5em;width:7px;height:7px;border-radius:50%;background:#4a8c5c}
+.why-card.con li::before{content:"";position:absolute;left:2px;top:.5em;width:7px;height:7px;border-radius:1px;background:#c98a3a;transform:rotate(45deg)}
+.verdict{
+  margin-top:18px; background:var(--ink); color:#eef3ee; border-radius:12px;
+  padding:20px 22px; font-size:.98rem; line-height:1.55;
+}
+.verdict b{color:var(--gold)}
+
+/* ============ ROUTE TABLE ============ */
+.route{width:100%;border-collapse:collapse;font-size:.82rem;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.route thead td{background:var(--ink);color:#fff;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:11px 12px}
+.route td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.route tbody tr:last-child td{border-bottom:none}
+.route tbody tr:nth-child(odd){background:#fff}
+.route tbody tr:nth-child(even){background:var(--paper2)}
+.route td:first-child{font-family:'Public Sans',sans-serif;font-weight:600;color:var(--ink)}
+
+/* ============ ARRIVAL solo lodge ============ */
+.arrival .lodge.solo{margin-top:2px}
+
+/* ============ ETAPE (per-world) ============ */
+.etape{margin-top:14px}
+.etape-band{position:relative;background:linear-gradient(135deg,var(--ink) 0%,var(--deep) 140%);color:#fff;padding:30px 22px 26px 56px}
+/* node sits ON the thread */
+.node{position:absolute;left:calc(var(--rail) - 17px);top:26px;width:34px;height:34px;border-radius:50%;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:600;font-size:1.15rem;box-shadow:0 0 0 5px var(--paper),0 0 0 6px var(--ac);z-index:3}
+.etape-k{font-family:'Public Sans',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:600;margin-bottom:8px;filter:brightness(1.5)}
+.etape-t{font-family:'Fraunces',serif;font-weight:600;font-size:2.05rem;line-height:1.02;margin:0 0 7px;color:#fff;letter-spacing:-.01em}
+.etape-s{font-size:.92rem;color:#e0e7df;font-style:italic;font-family:'Newsreader',serif}
+
+.etape-inner{padding:22px 18px 8px 52px}
+
+/* transit box */
+.transit{background:var(--paper2);border:1px solid var(--line);border-left:3px solid var(--ac);border-radius:8px;padding:13px 16px;margin-bottom:18px}
+.transit-h{font-family:'Public Sans',sans-serif;font-weight:600;font-size:.82rem;color:var(--ink);margin-bottom:5px}
+.transit-b{font-size:.84rem;line-height:1.55;color:#4a5650}
+.transit-b b{color:var(--ink)}
+
+/* weather */
+.wx-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:12px}
+.wx{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px 2px;text-align:center;min-width:0}
+.wx-i{font-size:1.1rem;line-height:1}
+.wx-v{font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;color:var(--ink);margin-top:5px}
+.wx-l{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-weight:600}
+.wx-note{font-size:.86rem;line-height:1.55;color:#4a5650;background:linear-gradient(0deg,transparent,transparent);border-left:2px solid var(--ac);padding:2px 0 2px 14px;margin-bottom:16px}
+
+/* fauna chips */
+.fauna{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.fa{font-family:'Public Sans',sans-serif;font-size:.72rem;background:var(--soft);color:var(--deep);border-radius:30px;padding:4px 11px;font-weight:500}
+
+/* marine truth box */
+.marine{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 17px;margin-bottom:18px;font-size:.88rem;line-height:1.55}
+.marine .marine-title{font-family:'Public Sans',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--deep);margin-bottom:8px}
+.marine b{color:var(--ink)}
+.marine .sp{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line);font-size:.84rem}
+.marine .sp:last-child{border-bottom:none}
+.marine .sp .pct{font-family:'Public Sans',sans-serif;font-weight:600;color:var(--deep);white-space:nowrap}
+
+/* section kicker inside etape */
+.sec-k{font-family:'Public Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);font-weight:700;margin:6px 0 10px;filter:saturate(1.2) brightness(.85)}
+
+/* ============ DAY accordion ============ */
+.program{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.day{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.day[open]{border-color:var(--ac)}
+.day-h{list-style:none;cursor:pointer;display:flex;align-items:center;gap:11px;padding:12px 14px}
+.day-h::-webkit-details-marker{display:none}
+.day-n{font-family:'Public Sans',sans-serif;font-weight:700;font-size:.74rem;color:#fff;background:var(--ac);border-radius:6px;padding:4px 7px;letter-spacing:.02em;flex-shrink:0}
+.day-meta{flex:1;min-width:0}
+.day-d{display:block;font-family:'Public Sans',sans-serif;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.day-ti{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:.98rem;color:var(--ink);line-height:1.2;margin-top:1px}
+.day-tag{font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 8px;border-radius:20px;flex-shrink:0}
+.t-active{background:#fbe7d6;color:#b5651d}
+.t-rest{background:#dcebe1;color:#2d6a45}
+.t-transit{background:#e6e6e6;color:#666}
+.day-chev{width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .25s;flex-shrink:0;margin-left:2px}
+.day[open] .day-chev{transform:rotate(-135deg)}
+.day-body{padding:2px 14px 14px 14px;border-top:1px solid var(--line)}
+.slot{display:flex;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line)}
+.slot:last-child{border-bottom:none}
+.slot-t{font-family:'Public Sans',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ac);width:46px;flex-shrink:0;padding-top:3px;filter:saturate(1.2) brightness(.82)}
+.slot-x{font-size:.88rem;line-height:1.52;color:#2c352f}
+.slot-x b{color:var(--ink)}
+.slot-x .tip{display:block;margin-top:4px;font-size:.8rem;color:var(--muted);font-style:italic;border-left:2px solid var(--line);padding-left:9px}
+
+/* ============ OPTIONS ============ */
+.opts{background:var(--paper2);border:1px dashed var(--line);border-radius:12px;padding:16px 16px 6px;margin-bottom:18px}
+.opts-h{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:4px}
+.opts-s{font-size:.82rem;color:#5e5346;font-style:italic;margin-bottom:12px;line-height:1.5}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.opt:last-child{border-bottom:none}
+.opt-ic{font-size:1.15rem;width:24px;text-align:center;flex-shrink:0;line-height:1.3}
+.opt-b{flex:1}
+.opt-n{font-family:'Fraunces',serif;font-weight:600;font-size:.92rem;color:var(--ink);line-height:1.25}
+.opt-n .opt-tag{font-family:'Public Sans',sans-serif;display:inline-block;font-size:.54rem;letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle;font-weight:700}
+.opt-tag.rain{background:#dde8f0;color:#3a6a8a}.opt-tag.kid{background:#fde8d8;color:#b5651d}
+.opt-n .opt-tag:not(.rain):not(.kid){background:var(--soft);color:var(--deep)}
+.opt-d{font-size:.82rem;color:#5a655e;line-height:1.5;margin-top:2px}
+.opt-p{font-family:'Public Sans',sans-serif;font-weight:700;font-size:.78rem;color:var(--ac);white-space:nowrap;padding-top:2px;filter:saturate(1.2) brightness(.82)}
+
+/* ============ LODGE ============ */
+.lodge{background:var(--ink);color:#eef3ee;border-radius:12px;padding:18px 19px;margin-bottom:12px;position:relative;overflow:hidden}
+.lodge::after{content:"";position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle at top right,var(--ac),transparent 70%);opacity:.35}
+.lodge.solo{background:linear-gradient(135deg,var(--ink),#24463a)}
+.lodge-l{font-family:'Public Sans',sans-serif;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px;position:relative}
+.lodge-l .badge-urgent{background:#c0392b;color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;letter-spacing:.04em}
+.lodge-n{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;color:#fff;margin-bottom:7px;line-height:1.1;position:relative}
+.lodge-d{font-size:.86rem;line-height:1.55;color:#cdd6cd;position:relative}
+.lodge-d b{color:#fff}
+
+/* leg / transit connector on the thread */
+.leg{position:relative;margin:0;padding:16px 0 16px 52px;display:flex;align-items:center;gap:10px}
+.leg-dot{position:absolute;left:calc(var(--rail) - 5px);top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;border:2px solid var(--gold);background:var(--paper);z-index:2}
+.leg::before{content:"";position:absolute;left:var(--rail);margin-left:-1px;top:0;bottom:0;width:0;border-left:2px dotted var(--gold);opacity:.55}
+.leg-txt{font-size:.72rem;letter-spacing:.04em;color:var(--gold-deep);font-weight:600;background:var(--paper);padding:3px 10px;border:1px solid var(--line);border-radius:20px}
+
+/* ============ BUDGET ============ */
+.budget{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px 18px}
+.b-row{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.b-row:last-child{border-bottom:none}
+.b-row span:first-child{color:#3a4640}
+.b-row span:last-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.b-row.budget-total{margin-top:2px;border-top:2px solid var(--ink);border-bottom:none;padding-top:14px}
+.b-row.budget-total span{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--ink)}
+.budget-note{font-size:.84rem;line-height:1.6;color:var(--muted);background:var(--paper2);border-radius:10px;padding:14px 16px;margin-top:12px}
+.budget-note b{color:var(--ink)}
+
+/* ============ PRACTICAL accordion ============ */
+.prac-wrap{display:flex;flex-direction:column;gap:7px}
+.prac{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.prac[open]{border-color:var(--gold)}
+.prac-q{list-style:none;cursor:pointer;font-family:'Fraunces',serif;font-weight:500;font-size:1rem;color:var(--ink);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.prac-q::-webkit-details-marker{display:none}
+.prac-chev{width:9px;height:9px;border-right:2px solid var(--gold-deep);border-bottom:2px solid var(--gold-deep);transform:rotate(45deg);transition:transform .25s;flex-shrink:0}
+.prac[open] .prac-chev{transform:rotate(-135deg)}
+.prac-a{padding:0 16px 16px;font-size:.88rem;line-height:1.6;color:#3a4640;border-top:1px solid var(--line);padding-top:13px}
+.prac-a b{color:var(--ink)}
+.prac-a ul{list-style:none;margin:7px 0 0;padding:0}
+.prac-a li{padding:4px 0 4px 16px;position:relative}
+.prac-a li::before{content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* ============ URGENT ============ */
+.urgent-lead{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--ink);margin-bottom:14px}
+.urgent{display:flex;flex-direction:column;gap:9px}
+.u-item{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+.u-item:first-child{border-color:#c0392b;border-left-width:3px}
+.u-item:nth-child(2){border-color:#d98324;border-left-width:3px}
+.u-n{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;color:#fff;background:var(--ink);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.u-item:first-child .u-n{background:#c0392b}
+.u-item:nth-child(2) .u-n{background:#d98324}
+.u-x{font-size:.88rem;line-height:1.5;color:#3a4640;padding-top:2px}
+.u-x strong{color:var(--ink)}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--ink);color:#cdd6cd;text-align:center;padding:46px 24px 54px;margin-top:30px}
+.foot-mark{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:2rem;color:var(--gold)}
+.foot-sub{font-family:'Public Sans',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-top:8px;color:#9aa89a}
+
+/* ============ REVEAL animation ============ */
+.etape,.block{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+}
+
+/* ============ RESPONSIVE up ============ */
+@media(min-width:560px){
+  .hero h1{font-size:4.4rem}
+  .why-grid{grid-template-columns:1fr 1fr}
+  body{font-size:18px}
+}
+@media(min-width:720px){
+  .hero{padding-top:84px}
+  .hero h1{font-size:5.2rem}
+}
+
+/* ============ FOCUS / A11Y ============ */
+summary:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+summary:focus:not(:focus-visible){outline:none}
+.day-h,.prac-q{ -webkit-tap-highlight-color:transparent }
+
+/* ============ LOCK LIGHT THEME (defeat forced/auto dark mode) ============ */
+@media (prefers-color-scheme: dark){
+  :root{ color-scheme: light only; }
+  html, body{ background:#fbf9f4 !important; color:#1f2a23 !important; }
+  .story p{ color:#26312b !important; }
+  .story-close{ color:#14241c !important; }
+  .why-intro,.opts-s,.budget-note,.muted{ color:#5e5246 !important; }
+  .day-body, .slot-x{ color:#2a342e !important; }
+  .day, .prac, .why-card, .budget, .u-item, .marine, .wx, .route, .opts{ background:#ffffff !important; }
+  .opts{ background:#f4f0e7 !important; }
+  .hero, .etape-band, .lodge, .verdict, .foot{ color:#fff !important; }
+}
+
+/* ============ ETAPE INTRO (richer description) ============ */
+.etape-intro{
+  font-family:'Newsreader',Georgia,serif; font-size:1.04rem; line-height:1.66;
+  color:#26312b; font-weight:450; margin:0 0 20px;
+}
+.etape-intro::first-letter{ font-weight:500 }
+
+/* gateway (arrival/departure) intro slightly different accent feel */
+.gateway .etape-intro{ color:#283129 }
+
+/* ============ FLAT day list (arrival/departure timeline, no accordion) ============ */
+.day-flat{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:4px 16px; margin-bottom:16px }
+.day-flat .slot{ border-bottom:1px dotted var(--line) }
+.day-flat .slot:last-child{ border-bottom:none }
+
+/* gateway node: a star marker instead of a number */
+.node-flag{ font-family:'Public Sans',sans-serif !important; font-size:1rem !important }
+.node-flag span{ transform:translateY(-1px) }
+
+/* gateway band: warmer, slightly distinct from the 3 worlds (uses gold accent + green) */
+.gateway .etape-band{ background:linear-gradient(135deg,#14241c 0%,#26473a 140%) }
+
+/* departure: the connector sits ABOVE the band */
+.leg-top{ margin-top:6px }
+
+/* gateway sections get a touch more breathing room from neighbors */
+.etape.gateway{ margin-top:10px }
+
+/* ============ HERO PHOTO ============ */
+.hero-photo{
+  margin:6px 0 26px; padding:0; position:relative;
+}
+.hero-photo img{
+  width:100%; height:auto; display:block; border-radius:14px;
+  box-shadow:0 8px 28px rgba(0,0,0,.34);
+  border:1px solid rgba(201,162,75,.35);
+}
+.hero-photo figcaption{
+  font-family:'Public Sans',sans-serif; font-size:.62rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--gold); margin-top:9px; text-align:right;
+  opacity:.85;
+}
+
+/* ============ ETAPE PHOTO ============ */
+.etape-photo{margin:0 0 20px;padding:0}
+.etape-photo img{
+  width:100%; height:auto; display:block; border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+  border:1px solid var(--line);
+}
+.etape-photo figcaption{
+  font-family:'Public Sans',sans-serif; font-size:.62rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin-top:8px; text-align:right;
+}
+
+/* ============ LODGE LINK ============ */
+.lodge-link{
+  display:inline-flex; align-items:center; gap:6px; margin-top:13px;
+  font-family:'Public Sans',sans-serif; font-size:.72rem; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase; text-decoration:none;
+  color:var(--gold); border:1px solid rgba(201,162,75,.45);
+  padding:7px 13px; border-radius:30px; position:relative;
+  transition:background .2s,border-color .2s;
+}
+.lodge-link:hover,.lodge-link:focus-visible{
+  background:rgba(201,162,75,.14); border-color:var(--gold);
+}
+.lodge-link span{ transition:transform .2s }
+.lodge-link:hover span{ transform:translateX(3px) }
+
+/* ============ BOOKING (à réserver) ============ */
+.book-lead{font-size:.96rem;line-height:1.55;color:#3a4640;margin:0 0 20px}
+.book-group{margin-bottom:18px}
+.book-group-h{
+  font-family:'Public Sans',sans-serif;font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:700;color:var(--muted);
+  margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--line);
+}
+.book-group-h.alert{color:#c0392b}
+.book-item{
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:13px 15px;margin-bottom:8px;
+}
+.book-group .book-group-h.alert ~ .book-item{border-left:3px solid #c0392b}
+.book-dot{
+  flex-shrink:0;width:9px;height:9px;border-radius:50%;
+  background:var(--gold);margin-top:6px;
+}
+.book-dot.urgent{background:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.14)}
+.book-x{font-size:.9rem;line-height:1.5;color:#3a4640}
+.book-x strong{color:var(--ink)}
+.book-link{
+  white-space:nowrap;font-family:'Public Sans',sans-serif;font-size:.78rem;
+  font-weight:600;color:var(--gold-deep);text-decoration:none;
+}
+.book-link:hover,.book-link:focus-visible{text-decoration:underline}
+
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-eyebrow">Grand voyage en famille · Été 2026</div>
+  <h1>Costa Rica<span class="pura">Pura Vida</span></h1>
+  <p class="hero-sub">Jungle caraïbe, volcan mythique, sources thermales et océan Pacifique — 13 nuits au cœur d'une des nature les plus riches d'Amérique centrale, à un rythme qui laisse respirer.</p>
+  <figure class="hero-photo">
+    <img src="https://eandrieu.github.io/costa-rica-recap/images/hero-paresseux.jpg" alt="Un paresseux dans la forêt du Costa Rica" loading="eager">
+    <figcaption>Un paresseux, emblème du Costa Rica</figcaption>
+  </figure>
+  <div class="hero-dates"><span>30 juillet 2026</span><span class="dash"></span><span>12 août 2026</span></div>
+  <svg class="hero-map" viewBox="0 0 420 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte du Costa Rica entre Nicaragua et Panama, océan Pacifique et mer des Caraïbes, avec le tracé du voyage Tortuguero, Arenal, Manuel Antonio">
+  <defs>
+    <linearGradient id="pacG" x1="0" y1="1" x2="0.5" y2="0"><stop offset="0%" stop-color="#0f3a4a"/><stop offset="100%" stop-color="#175063"/></linearGradient>
+    
+    <linearGradient id="landG" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0%" stop-color="#245440"/><stop offset="100%" stop-color="#173628"/></linearGradient>
+    <clipPath id="mapFrame"><rect width="420" height="250"/></clipPath>
+  </defs>
+  <g clip-path="url(#mapFrame)">
+    <rect width="420" height="250" fill="url(#pacG)"/>
+    <path d="M60.2,33.7 C55.4,30.4 41.3,20.5 29.9,12.9 C18.5,5.3 -1.4,-5.8 -11.0,-13.6 C-20.6,-21.4 -21.3,-28.9 -30.3,-35.8 C-39.3,-42.7 -54.3,-48.4 -67.2,-56.5 C-80.1,-64.6 -105.5,-79.8 -111.0,-86.2 C-116.5,-92.6 -105.2,-96.4 -101.3,-96.4 C-97.4,-96.4 -90.2,-87.2 -86.8,-86.4 C-83.4,-85.6 -85.6,-89.9 -80.2,-91.1 C-74.8,-92.3 -59.1,-91.0 -53.0,-93.8 C-46.9,-96.6 -45.8,-106.3 -42.0,-108.8 C-38.2,-111.3 -30.9,-104.1 -29.2,-109.4 C-27.5,-114.7 -34.1,-136.4 -31.1,-141.8 C-28.1,-147.2 -16.8,-143.1 -10.6,-143.3 C-4.4,-143.5 1.7,-140.2 7.7,-142.9 C13.7,-145.6 19.4,-159.7 26.6,-160.4 C33.8,-161.1 46.8,-147.9 52.4,-147.1 C58.0,-146.3 57.4,-152.7 61.4,-155.3 C65.4,-157.9 70.0,-159.0 77.5,-163.1 C85.0,-167.2 102.9,-176.1 108.0,-181.2 C113.1,-186.3 107.9,-192.6 109.5,-194.7 C111.1,-196.8 114.8,-191.8 117.9,-194.2 C121.0,-196.6 125.9,-207.1 129.1,-209.9 C132.3,-212.7 134.3,-213.1 138.2,-211.8 C142.1,-210.5 148.0,-203.9 153.2,-201.8 C158.4,-199.7 164.8,-197.9 170.7,-198.8 C176.6,-199.7 183.4,-205.9 190.0,-207.2 C196.6,-208.5 203.7,-205.8 212.1,-207.2 C220.5,-208.6 235.7,-213.0 242.5,-215.8 C249.3,-218.6 247.9,-223.6 254.6,-224.8 C261.3,-226.0 281.0,-224.6 284.6,-223.4 C288.2,-222.2 279.0,-220.5 277.1,-217.1 C275.2,-213.7 271.9,-208.6 272.6,-202.4 C273.3,-196.2 283.4,-185.7 281.6,-178.3 C279.8,-170.9 266.1,-163.7 261.4,-155.9 C256.7,-148.1 254.0,-138.4 252.0,-129.5 C250.0,-120.6 248.9,-107.9 249.2,-100.5 C249.5,-93.1 252.8,-91.0 253.9,-83.5 C255.0,-76.0 257.9,-59.7 256.1,-53.9 C254.3,-48.1 246.2,-52.9 242.7,-47.4 C239.2,-41.9 234.9,-26.6 234.5,-19.3 C234.1,-12.0 242.4,-7.4 240.5,-1.9 C238.6,3.6 224.8,9.4 222.6,14.9 C220.4,20.4 223.9,28.1 226.7,32.7 C229.5,37.3 241.3,39.5 240.1,43.5 C238.9,47.5 226.7,55.9 219.2,57.4 C211.7,58.9 199.8,56.0 193.4,53.1 C187.0,50.2 185.7,42.6 178.9,39.5 C172.1,36.4 158.8,33.5 151.1,34.0 C143.4,34.5 143.4,44.0 131.0,42.6 C118.6,41.2 84.6,26.6 73.3,25.2 C62.0,23.8 62.3,32.3 60.2,33.7 C58.1,35.1 65.0,37.0 60.2,33.7 Z" fill="#33433c" stroke="#3e4e47" stroke-width="0.8"/>
+    <path d="M745.4,287.9 C740.7,284.9 723.9,277.6 716.2,268.9 C708.5,260.2 696.9,241.9 697.4,233.4 C697.9,224.9 719.2,219.3 719.1,215.8 C719.0,212.3 703.1,215.5 696.9,211.3 C690.7,207.1 690.2,196.0 680.6,189.6 C671.0,183.2 650.1,173.6 637.0,171.3 C623.9,169.0 607.7,171.2 598.7,175.5 C589.7,179.8 589.4,192.1 580.9,198.4 C572.4,204.7 554.3,211.9 545.6,214.9 C536.9,217.9 530.9,214.6 526.5,217.2 C522.1,219.8 512.6,223.0 517.9,230.9 C523.2,238.8 556.8,259.5 559.7,266.6 C562.6,273.7 541.7,272.1 535.8,275.0 C529.9,277.9 531.6,282.7 523.1,284.8 C514.6,286.9 491.3,293.9 482.4,288.1 C473.5,282.3 471.5,253.3 467.3,248.8 C463.1,244.3 462.3,258.8 455.9,260.0 C449.5,261.2 434.4,260.9 427.0,256.1 C419.6,251.3 418.0,234.6 409.4,229.7 C400.8,224.8 382.9,227.2 373.5,225.3 C364.1,223.4 360.4,218.8 350.8,217.6 C341.2,216.4 319.6,215.4 313.2,217.7 C306.8,220.0 312.5,231.3 310.5,232.0 C308.5,232.7 301.4,225.7 300.5,222.0 C299.6,218.3 303.2,213.2 305.1,209.0 C307.0,204.8 311.8,199.6 312.4,195.6 C313.0,191.6 307.4,186.9 309.0,183.7 C310.6,180.5 322.9,178.7 322.1,175.9 C321.3,173.1 306.9,172.0 303.9,166.2 C300.9,160.4 298.1,144.9 303.4,139.7 C308.7,134.5 326.8,131.0 337.2,133.8 C347.6,136.6 363.9,151.4 368.6,157.4 C373.3,163.4 361.5,168.6 366.8,171.3 C372.1,174.0 394.9,174.7 401.8,174.3 C408.7,173.9 404.8,167.3 410.0,169.0 C415.2,170.7 423.4,183.3 434.1,185.1 C444.8,186.9 464.3,183.8 477.1,180.4 C489.9,177.0 499.8,168.5 514.3,163.7 C528.8,158.9 554.2,155.8 567.5,150.5 C580.8,145.2 584.8,133.3 597.3,130.8 C609.8,128.3 638.4,133.1 645.6,134.7 C652.8,136.3 635.1,139.7 642.4,141.1 C649.7,142.5 677.2,141.2 691.2,143.4 C705.2,145.6 719.3,149.8 730.1,154.8 C740.9,159.8 748.9,168.4 758.7,174.5 C768.5,180.6 788.0,188.3 791.6,192.7 C795.2,197.1 779.4,194.6 781.0,202.3 C782.6,210.0 800.7,231.8 801.3,241.1 C801.9,250.4 792.0,258.3 784.8,260.7 C777.6,263.1 762.9,251.5 756.6,255.9 C750.3,260.3 747.2,282.8 745.4,287.9 C743.6,293.0 750.1,290.9 745.4,287.9 Z" fill="#33433c" stroke="#3e4e47" stroke-width="0.8"/>
+    <path d="M300.5,222.0 C292.9,219.7 263.4,211.9 253.0,207.4 C242.6,202.9 236.4,197.6 235.2,193.6 C234.0,189.6 244.2,186.3 245.3,182.2 C246.4,178.1 246.5,172.5 242.1,167.7 C237.7,162.9 227.3,156.5 217.9,151.9 C208.5,147.3 193.8,142.4 183.5,139.0 C173.2,135.6 159.0,135.0 153.3,130.6 C147.6,126.2 152.2,116.3 147.6,111.3 C143.0,106.3 127.4,98.4 124.6,99.6 C121.8,100.8 132.2,113.1 130.3,118.7 C128.4,124.3 118.8,134.8 112.8,134.4 C106.8,134.0 100.5,120.1 92.8,116.1 C85.1,112.1 71.1,112.8 64.7,109.6 C58.3,106.4 54.5,101.7 52.7,96.4 C50.9,91.1 51.3,82.9 53.2,76.4 C55.1,69.9 66.9,60.4 64.8,55.6 C62.7,50.8 40.8,49.9 40.1,46.4 C39.4,42.9 54.9,37.1 60.2,33.7 C65.5,30.3 62.0,23.8 73.3,25.2 C84.6,26.6 118.6,41.2 131.0,42.6 C143.4,44.0 143.4,34.5 151.1,34.0 C158.8,33.5 172.1,36.4 178.9,39.5 C185.7,42.6 187.0,50.2 193.4,53.1 C199.8,56.0 211.7,58.9 219.2,57.4 C226.7,55.9 233.2,40.0 240.1,43.5 C247.0,47.0 253.3,69.2 262.3,79.2 C271.3,89.2 284.1,97.0 296.1,105.7 C308.1,114.4 336.0,128.4 337.2,133.8 C338.4,139.2 308.7,134.5 303.4,139.7 C298.1,144.9 300.9,160.4 303.9,166.2 C306.9,172.0 321.3,173.1 322.1,175.9 C322.9,178.7 310.6,180.5 309.0,183.7 C307.4,186.9 313.0,191.6 312.4,195.6 C311.8,199.6 307.0,204.8 305.1,209.0 C303.2,213.2 301.2,219.9 300.5,222.0 C299.8,224.1 308.1,224.3 300.5,222.0 Z" fill="url(#landG)" stroke="#5cc3a1" stroke-width="1.6"/>
+  </g>
+  <text x="150" y="30" fill="#9bb0a7" font-family="'Public Sans',sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">NICARAGUA</text>
+  <text x="398" y="238" fill="#9bb0a7" font-family="'Public Sans',sans-serif" font-size="8" letter-spacing="2" text-anchor="end">PANAMA</text>
+  <text x="22" y="150" fill="#7ab8c8" font-family="'Newsreader',serif" font-style="italic" font-size="9">océan<tspan x="22" dy="11">Pacifique</tspan></text>
+  <text x="404" y="74" fill="#a6e3d6" font-family="'Newsreader',serif" font-style="italic" font-size="9" text-anchor="end">mer des<tspan x="404" dy="11">Caraïbes</tspan></text>
+  <path d="M252.0,69.7 C209.0,66.0 199.0,80.0 154.0,74.3 S169.85,119.85 197.7,145.4" fill="none" stroke="#f0cf7a" stroke-width="2.2" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <circle cx="202.1" cy="109.9" r="2.6" fill="#eef3ee"/>
+  <text x="209.1" y="118.9" fill="#cdd6cd" font-family="'Public Sans',sans-serif" font-size="7">San José</text>
+  <g><circle cx="252.0" cy="69.7" r="8.5" fill="#3c8c7a" stroke="#fff" stroke-width="2"/><text x="252.0" y="73.10000000000001" fill="#fff" font-family="'Fraunces',serif" font-size="10" font-weight="600" text-anchor="middle">1</text><text x="264.0" y="72.7" fill="#fff" font-family="'Public Sans',sans-serif" font-size="8.5" font-weight="600">Tortuguero</text></g>
+  <g><circle cx="154.0" cy="74.3" r="8.5" fill="#d4622a" stroke="#fff" stroke-width="2"/><text x="154.0" y="77.7" fill="#fff" font-family="'Fraunces',serif" font-size="10" font-weight="600" text-anchor="middle">2</text><text x="142.0" y="77.3" fill="#fff" font-family="'Public Sans',sans-serif" font-size="8.5" font-weight="600" text-anchor="end">Arenal</text></g>
+  <g><circle cx="197.7" cy="145.4" r="8.5" fill="#e8924a" stroke="#fff" stroke-width="2"/><text x="197.7" y="148.8" fill="#fff" font-family="'Fraunces',serif" font-size="10" font-weight="600" text-anchor="middle">3</text><text x="197.7" y="165.4" fill="#fff" font-family="'Public Sans',sans-serif" font-size="8.5" font-weight="600" text-anchor="middle">Manuel Antonio</text></g>
+</svg>
+  <div class="hero-stats"><div class="hs"><div class="hs-n">13</div><div class="hs-l">Nuits</div></div><div class="hs"><div class="hs-n">4</div><div class="hs-l">Étapes</div></div><div class="hs"><div class="hs-n">3</div><div class="hs-l">Voyageurs</div></div><div class="hs"><div class="hs-n">4</div><div class="hs-l">Espèces de singes</div></div></div>
+</header>
+
+<main class="wrap">
+  <div class="thread" aria-hidden="true"></div>
+
+  <section class="block">
+    <div class="kicker">Le voyage en quelques mots</div>
+    <div class="story"><p>Ce voyage suit une ligne simple, d'une côte à l'autre. On atterrit au centre du pays, on rejoint d'abord la côte caraïbe et sa jungle, puis on remonte vers le volcan Arenal et ses sources chaudes, avant de redescendre sur le Pacifique pour finir au bord de la mer. Treize nuits, trois grandes étapes, chacune avec son décor et son rythme.</p><p>Tortuguero ouvre le séjour : un réseau de canaux dans la forêt, accessible seulement par bateau, où l'on observe singes, oiseaux et caïmans au fil de l'eau. C'est aussi, début août, la pleine saison de ponte des tortues vertes sur la plage, l'une des raisons de venir à cette période. Arenal, ensuite, c'est le pays du volcan : randonnée, ponts suspendus, tyrolienne et rafting pour ceux qui veulent bouger, et le soir des bains dans des rivières naturellement chaudes. Manuel Antonio referme le voyage côté Pacifique, avec un petit parc national très riche en animaux (paresseux, singes, iguanes) posé au-dessus de plages calmes, et la possibilité de sortir voir les baleines à bosse, présentes en août.</p><p>Le programme est pensé pour rester confortable avec un enfant de 7 ans. Les visites et sorties se font surtout le matin, quand le ciel est dégagé ; les après-midis, souvent pluvieux en cette saison, laissent du temps pour se reposer. Les trajets entre étapes sont regroupés et limités autant que possible, avec des transferts organisés (bateau, navette) plutôt que de longues journées de route.</p><p class="story-close">Un premier grand voyage long-courrier en famille, varié sans être épuisant : de la jungle, un volcan, des sources chaudes et l'océan, reliés par un itinéraire qui prend son temps.</p></div>
+  </section>
+
+  <section class="block">
+    <div class="kicker">Pourquoi le Costa Rica, fin juillet–août</div>
+    <p class="why-intro">Le Costa Rica en plein été n'est pas le choix de carte postale — c'est la saison verte. Voici la photo honnête, pour décider en connaissance de cause.</p>
+    <div class="why-grid">
+      <div class="why-card pro"><div class="why-card-h">Ce qui plaide pour</div><ul><li><b>La ponte des tortues vertes à Tortuguero.</b> Juillet–août est la pleine saison. Ce spectacle nocturne n'existe tout simplement pas en saison sèche (décembre–avril).</li><li><b>Le pic des baleines à bosse.</b> La migration de l'hémisphère sud culmine en août sur la côte Pacifique — les plus nombreuses de l'année, observables depuis Manuel Antonio.</li><li><b>Le « veranillo ».</b> Une accalmie des pluies propre à juillet–août : il pleut nettement moins qu'en juin ou septembre, avec des matinées souvent ensoleillées.</li><li><b>Une faune très active.</b> C'est la saison des amours pour beaucoup d'espèces : animaux plus mobiles, plus visibles, plus nombreux.</li><li><b>Une nature spectaculaire.</b> Forêts d'un vert intense, cascades à plein débit, rivières gonflées idéales pour le rafting.</li><li><b>Moins de foule qu'en haute saison</b> sèche, sur la plupart des sites.</li></ul></div>
+      <div class="why-card con"><div class="why-card-h">Ce qu'il faut accepter</div><ul><li><b>Il pleut, pour de vrai.</b> Comptez une averse quasi quotidienne. Mais c'est une pluie tropicale — chaude, intense, le plus souvent en milieu ou fin d'après-midi, et qui dure 2 à 3h, pas toute la journée. Rien à voir avec un crachin continu.</li><li><b>Chaleur et humidité élevées</b> sur les deux côtes (28°C, air lourd). Fatigant, surtout pour un enfant. Les lodges climatisés et les pauses piscine comptent.</li><li><b>Moustiques</b> en pleine saison — anti-moustiques et traitement antipaludéen à anticiper avec le médecin.</li><li><b>Aucune garantie météo.</b> Une matinée peut être pluvieuse, le volcan peut rester dans les nuages. Le programme prévoit donc des marges et des replis.</li><li><b>Tortuguero est l'endroit le plus arrosé du pays</b> — la pluie y fait partie de l'expérience, à embrasser plutôt qu'à subir.</li><li><b>Ce n'est pas la saison la plus sèche.</b> Si la priorité absolue était le grand soleil garanti, décembre–avril serait plus sûr (mais sans tortues ni baleines).</li></ul></div>
+    </div>
+    <div class="verdict"><b>En clair :</b> fin juillet–août est l'un des meilleurs compromis de l'année au Costa Rica — la fenêtre où l'on cumule tortues, baleines et accalmie relative des pluies. À condition d'accepter une pluie chaude en après-midi et de caler les sorties le matin. C'est exactement la logique de ce programme.</div>
+  </section>
+
+  <section class="block">
+    <div class="kicker">L'itinéraire d'un coup d'œil</div>
+    <table class="route"><thead><tr><td>Étape</td><td>Dates</td><td>Accès</td></tr></thead><tbody><tr><td>✈ Départ Paris CDG</td><td>30 juillet</td><td>Air France direct 13h40 → 17h00</td></tr><tr><td>🌿 Peace Lodge</td><td>30 juillet soir</td><td>Transfert aéroport · 30 min</td></tr><tr><td>🐢 Tortuguero</td><td>31 juil. → 4 août · 4 nuits</td><td>Bus + bateau · ~3h</td></tr><tr><td>🌋 Arenal – Nayara Tented Camp</td><td>4 → 6 août · 2 nuits</td><td>Bateau + navette · ~4h</td></tr><tr><td>♨️ Arenal – Tabacón Resort</td><td>6 → 8 août · 2 nuits</td><td>Taxi · 15 min</td></tr><tr><td>🏖 Manuel Antonio</td><td>8 → 12 août · 4 nuits</td><td>Navette + arrêt croco · ~5h</td></tr><tr><td>✈ Retour Paris CDG</td><td>12 août</td><td>Air France direct 19h05 → 13h40+1</td></tr></tbody></table>
+  </section>
+
+  
+<section class="etape gateway" data-world="gateway" style="--ac:#c9a24b;--ink:#14241c;--deep:#24463a;--soft:#eef0e7">
+  <div class="etape-band">
+    <div class="node node-flag"><span>✦</span></div>
+    <div class="etape-head">
+      <div class="etape-k">Le départ de France</div>
+      <h2 class="etape-t">Paris → Costa Rica</h2>
+      <div class="etape-s">Vol direct depuis Paris et première nuit près de l'aéroport</div>
+    </div>
+  </div>
+  <div class="etape-inner">
+    <p class="etape-intro">Le voyage commence à Roissy avec un vol Air France direct vers San José (11h20). L'avion se pose en fin d'après-midi : plutôt que de filer aussitôt vers la jungle, la première nuit se passe tout près, en altitude, dans la forêt nuageuse. Une étape courte et pratique pour récupérer du décalage horaire avant de prendre la route le lendemain.</p>
+    <div class="program"><div class="day-flat"><div class="slot"><div class="slot-t">Aller</div><div class="slot-x"><b>Vol Air France AF428, direct</b> — Paris CDG 13h40 → San José 17h00 (11h20 de vol). Trois voyageurs en éco, bagages en soute inclus.</div></div><div class="slot"><div class="slot-t">17h</div><div class="slot-x"><b>Arrivée à San José</b> (aéroport Juan Santamaría). Récupération des bagages, puis transfert privé vers les hauteurs : environ 45 min de route jusqu'au lodge.</div></div><div class="slot"><div class="slot-t">Soir</div><div class="slot-x"><b>Nuit au Peace Lodge</b>, en forêt nuageuse à 1 600 m, à environ 45 min de l'aéroport. De quoi dormir au calme et amortir le jetlag avant le vrai départ.</div></div></div></div>
+    <div class="lodge solo"><div class="lodge-l">1 nuit · arrivée jeudi 30 juillet → vendredi 31 juillet</div><div class="lodge-n">Peace Lodge — La Paz Waterfall Gardens</div><div class="lodge-d">Forêt nuageuse à 1 600 m, à environ 45 min de l'aéroport. Chambre avec jacuzzi, cheminée et douche cascade. Le parc se visite le lendemain matin avant le départ : cinq cascades et un sanctuaire d'animaux secourus (toucans, singes, paresseux, jaguars et pumas en grands enclos, colibris en liberté). À présenter à Elio comme un refuge, pas une rencontre sauvage — mais les félins de près et les colibris qu'on nourrit à la main marquent les esprits.</div><a class="lodge-link" href="https://waterfallgardens.com" target="_blank" rel="noopener">Site officiel <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="leg"><span class="leg-dot"></span><span class="leg-txt">Route vers Tortuguero · ~3h (bus + bateau)</span></div>
+</section>
+
+  
+<section class="etape" data-world="tortuguero" style="--ac:#3c8c7a;--ink:#0e2c20;--deep:#1f4d39;--soft:#e7f0ec">
+  <div class="etape-band">
+    <div class="node"><span>1</span></div>
+    <div class="etape-head">
+      <div class="etape-k">Étape 1</div>
+      <h2 class="etape-t">Tortuguero</h2>
+      <div class="etape-s">La jungle caraïbe, accessible seulement par bateau</div>
+    </div>
+  </div>
+  <div class="etape-inner">
+    <figure class="etape-photo"><img src="https://eandrieu.github.io/costa-rica-recap/images/tortuguero-tortue.jpg" alt="Une tortue verte sur la plage de Tortuguero" loading="lazy"><figcaption>Tortue verte sur le sable noir de Tortuguero</figcaption></figure>
+    <p class="etape-intro">Tortuguero n'est accessible que par bateau : un réseau de canaux bordés de forêt dense, parfois comparé à une petite Amazonie. On s'y déplace au fil de l'eau, surtout le matin, pour observer singes, oiseaux, paresseux et caïmans. Le soir, sur la longue plage de sable noir, c'est la pleine saison de ponte des tortues vertes début août — l'une des raisons de venir à cette période. Quatre nuits dans un endroit calme et isolé, sans voiture.</p>
+    <div class="transit"><div class="transit-h">Bus + bateau depuis Peace Lodge — environ 3h au total</div><div class="transit-b">Visite matinale du sanctuaire de La Paz, puis :<br/>
+    • <b>~2h de bus</b> à travers le Parc Braulio Carrillo jusqu'à l'embarcadère de La Pavona<br/>
+    • <b>~1h à 1h30 de bateau</b> dans les canaux jusqu'au lodge<br/>
+    Premiers toucans sur les berges — le trajet est déjà une aventure.</div></div>
+    <div class="wx-row"><div class="wx"><div class="wx-i">🌡</div><div class="wx-v">25–30°C</div><div class="wx-l">Températures</div></div><div class="wx"><div class="wx-i">🌧</div><div class="wx-v">~13j/mois</div><div class="wx-l">Jours de pluie</div></div><div class="wx"><div class="wx-i">☀</div><div class="wx-v">~10h/jour</div><div class="wx-l">Soleil</div></div><div class="wx"><div class="wx-i">🌊</div><div class="wx-v">28°C</div><div class="wx-l">Eau</div></div></div>
+    <div class="wx-note">Matins souvent dégagés — idéal pour les sorties faune. Pluies chaudes et courtes en après-midi. Humidité élevée, prévoir vêtements légers imperméables et anti-moustiques.</div>
+    <div class="fauna"><span class="fa">🐢 Tortues vertes (ponte)</span><span class="fa">🐊 Caïmans &amp; crocodiles</span><span class="fa">🐒 Singes araignées</span><span class="fa">🐒 Singes hurleurs</span><span class="fa">🦜 Toucans</span><span class="fa">🦥 Paresseux</span><span class="fa">🦎 Iguanes</span><span class="fa">🐦 Martins-pêcheurs</span></div>
+    
+    <div class="sec-k">Jour par jour</div>
+    <div class="program"><details class="day">
+<summary class="day-h">
+  <span class="day-n">J1</span>
+  <span class="day-meta"><span class="day-d">Vendredi 31 juillet</span><span class="day-ti">Sanctuaire de La Paz & arrivée à Tortuguero</span></span>
+  <span class="day-tag t-transit">Transfert</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">8h</div><div class="slot-x"><b>Parc de La Paz avant le départ</b> — accès matinal sans se presser, avant les bus : cascades, toucans, colibris en liberté, et félins (jaguars, pumas) en enclos de sauvetage. Une heure suffit pour un premier émerveillement.</div></div><div class="slot"><div class="slot-t">9h30</div><div class="slot-x"><b>Navette vers l'embarcadère</b> à travers le Parc Braulio Carrillo. Paysages de forêt nuageuse.</div></div><div class="slot"><div class="slot-t">Midi</div><div class="slot-x"><b>Montée en bateau dans les canaux</b> — 1h de navigation jusqu'au Tortuga Lodge. Premiers animaux depuis le bateau.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Installation, déjeuner tardif, repos. Récupération du décalage horaire — pas d'activité imposée ce soir. Piscine et jardins à la carte.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J2</span>
+  <span class="day-meta"><span class="day-d">Samedi 1er août</span><span class="day-ti">Safari pirogue à l'aube</span></span>
+  <span class="day-tag t-active">Active</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">5h30</div><div class="slot-x"><b>Sortie pirogue dans les canaux à l'aube</b> — le meilleur créneau de la journée. Singes qui se réveillent, toucans, caïmans sur les berges, brume sur l'eau. <span class="tip">Un temps fort de Tortuguero (la faune reste toujours une affaire de chance).</span></div></div><div class="slot"><div class="slot-t">8h</div><div class="slot-x"><b>Petit-déjeuner</b> sur la terrasse rivière au retour.</div></div><div class="slot"><div class="slot-t">10h30</div><div class="slot-x"><b>Sentier guidé dans la réserve privée</b> — paresseux, iguanes, grenouilles. Une heure tranquille avant la chaleur.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Pluie probable — piscine, hamac, jeux. Elio peut chercher les grenouilles qui sortent sous la pluie.</div></div><div class="slot"><div class="slot-t">20h30</div><div class="slot-x"><b>Sortie tortues nocturne</b> (1re tentative) — observer la ponte des tortues vertes avec un guide. <span class="tip">Lampe frontale à lumière rouge indispensable.</span></div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J3</span>
+  <span class="day-meta"><span class="day-d">Dimanche 2 août</span><span class="day-ti">Village, plage & canoë tranquille</span></span>
+  <span class="day-tag t-rest">Calme</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">9h</div><div class="slot-x"><b>Bateau jusqu'au village de Tortuguero</b> — village coloré, centre de conservation des tortues, marché, glaces. Rythme détendu.</div></div><div class="slot"><div class="slot-t">11h</div><div class="slot-x"><b>Promenade sur la plage caraïbe</b> — sable noir, ambiance bout du monde. <span class="tip">Baignade déconseillée (courants), mais la balade est superbe.</span></div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Au choix : balade en canoë silencieux (approche fine des animaux) ou après-midi piscine. Selon l'énergie d'Elio.</div></div><div class="slot"><div class="slot-t">Soir</div><div class="slot-x"><b>2e sortie tortues</b> possible si la 1re n'a pas abouti — pour mettre toutes les chances de voir une ponte complète.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J4</span>
+  <span class="day-meta"><span class="day-d">Lundi 3 août</span><span class="day-ti">Matinée nature & repos avant la route</span></span>
+  <span class="day-tag t-rest">Calme</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">Matin</div><div class="slot-x"><b>Observation libre dans les jardins du lodge</b> — toucans et singes viennent souvent à l'heure du petit-déjeuner. Dernière pirogue optionnelle pour les motivés.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Après-midi entièrement libre — piscine, repos, lecture. Préparer les bagages pour la grande traversée du lendemain. Couché tôt.</div></div></div>
+</details></div>
+    <div class="opts">
+      <div class="opts-h">Options · à la carte</div>
+      <div class="opts-s">C'est un <b>menu, pas une checklist</b> — 1 à 2 de ces activités par étape suffisent largement. Prix indicatifs par personne (enfant souvent réduit).</div>
+      <div class="opt"><div class="opt-ic">🛶</div><div class="opt-b"><div class="opt-n">Tour en canoë à rames<span class="opt-tag">nature</span></div><div class="opt-d">Plus silencieux que le bateau à moteur, approche fine des animaux. Départs 6h / 9h / 15h, ~2h.</div></div><div class="opt-p">~30 $</div></div><div class="opt"><div class="opt-ic">🐸</div><div class="opt-b"><div class="opt-n">Balade nocturne grenouilles & faune<span class="opt-tag kid">fun enfant</span></div><div class="opt-d">Grenouilles aux yeux rouges, serpents, insectes à la lampe. ~2h, accessible à tous. Idéal un soir sans tortues.</div></div><div class="opt-p">~30–40 $</div></div><div class="opt"><div class="opt-ic">🏛</div><div class="opt-b"><div class="opt-n">Musée de la Tortue Verte<span class="opt-tag rain">par temps de pluie</span></div><div class="opt-d">Petit musée au village, film de 20 min sous-titré en français sur les tortues et la conservation. Court mais instructif.</div></div><div class="opt-p">~3 $</div></div><div class="opt"><div class="opt-ic">⛰</div><div class="opt-b"><div class="opt-n">Montée au Cerro Tortuguero</div><div class="opt-d">Petite balade en forêt puis un escalier (quelques centaines de marches) jusqu'au sommet de cet ancien volcan de 119 m, point culminant de la côte caraïbe : vue à 360° sur les canaux et l'océan. Avec guide, environ 2h. Facile mais ça grimpe à la fin — accessible à Elio.</div></div><div class="opt-p">~25 $</div></div><div class="opt"><div class="opt-ic">🎣</div><div class="opt-b"><div class="opt-n">Sortie pêche dans les canaux<span class="opt-tag">nature</span></div><div class="opt-d">Tarpon, snook — pêche encadrée et licence incluse. Pour une matinée différente.</div></div><div class="opt-p">sur devis</div></div>
+    </div>
+    <div class="lodge"><div class="lodge-l">4 nuits · vendredi 31 juillet → mardi 4 août <span class="badge-urgent">URGENT · non remboursable</span></div><div class="lodge-n">Tortuga Lodge & Gardens</div><div class="lodge-d">Écolodge confortable de 29 chambres sur la rivière Tortuguero, au cœur du parc, accessible seulement par bateau. Chambres avec vue rivière, ventilateur et climatisation discrète, terrasse ou balcon. Piscine (filtration écologique à l'eau salée), jardins, réserve privée et restaurant réputé (Green Turtle). En raison de l'isolement, <b>petit-déjeuner, déjeuner et dîner sont inclus</b> (boissons alcoolisées en sus). Parfait pour une famille : sorties en bateau, kayak, marche nocturne et observation de la faune au départ du lodge.</div><a class="lodge-link" href="https://www.tortugalodge.com" target="_blank" rel="noopener">Site officiel <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="leg"><span class="leg-dot"></span><span class="leg-txt">Bateau + navette · ~4h30–5h</span></div>
+</section>
+<section class="etape" data-world="arenal" style="--ac:#d4622a;--ink:#241c17;--deep:#3a2c22;--soft:#f3eae3">
+  <div class="etape-band">
+    <div class="node"><span>2</span></div>
+    <div class="etape-head">
+      <div class="etape-k">Étape 2</div>
+      <h2 class="etape-t">Arenal &amp; La Fortuna</h2>
+      <div class="etape-s">Le volcan, les activités de plein air et les sources chaudes</div>
+    </div>
+  </div>
+  <div class="etape-inner">
+    <figure class="etape-photo"><img src="https://eandrieu.github.io/costa-rica-recap/images/arenal-volcan.jpg" alt="Le volcan Arenal vu depuis la jungle" loading="lazy"><figcaption>Le cône de l'Arenal depuis La Fortuna</figcaption></figure>
+    <p class="etape-intro">Changement de décor : place au volcan. Le cône de l'Arenal (1 633 m) domine La Fortuna ; il n'émet plus de lave depuis 2010, mais reste un beau point de repère. C'est l'étape la plus active du séjour, avec de quoi varier selon l'envie : ponts suspendus, tyrolienne, rafting, randonnée, et la cascade de La Fortuna. En fin de journée, on se baigne dans des rivières naturellement chaudes alimentées par la chaleur du volcan. Quatre nuits qui mêlent activités et détente.</p>
+    <div class="transit"><div class="transit-h">Bateau + navette privée depuis Tortuguero — compter 4h30 à 5h au total</div><div class="transit-b">• <b>~1h à 1h30 de bateau</b> de Tortuguero jusqu'à l'embarcadère de La Pavona<br/>
+    • <b>~3h à 3h30 de navette</b> privée jusqu'aux lodges d'Arenal<br/>
+    Aucune conduite. <b>Note trajets sur place :</b> La Fortuna est à 15–25 min des lodges en taxi — les activités (tyrolienne, cascade, rafting) impliquent de courts transferts routiers, organisés par les prestataires.</div></div>
+    <div class="wx-row"><div class="wx"><div class="wx-i">🌡</div><div class="wx-v">22–30°C</div><div class="wx-l">Températures</div></div><div class="wx"><div class="wx-i">🌧</div><div class="wx-v">~20j/mois</div><div class="wx-l">Jours de pluie</div></div><div class="wx"><div class="wx-i">☀</div><div class="wx-v">~6h/jour</div><div class="wx-l">Soleil</div></div><div class="wx"><div class="wx-i">🌋</div><div class="wx-v">Actif</div><div class="wx-l">Volcan</div></div></div>
+    <div class="wx-note">Matins en moyenne plus dégagés que les après-midi, mais avec ~20 jours de pluie par mois en août, le sommet du volcan reste souvent dans les nuages : une vue bien dégagée est un beau bonus, pas une certitude. Les pluies tombent surtout l'après-midi — parfait pour enchaîner avec les sources chaudes en soirée. Caler les activités extérieures le matin.</div>
+    <div class="fauna"><span class="fa">🦥 Paresseux</span><span class="fa">🐒 Singes hurleurs</span><span class="fa">🦜 Aras écarlates</span><span class="fa">🦜 Toucans</span><span class="fa">🦋 Papillons morpho</span><span class="fa">🐸 Grenouilles venimeuses</span><span class="fa">🦎 Basilics</span><span class="fa">🌋 Volcan Arenal</span></div>
+    
+    <div class="sec-k">Jour par jour</div>
+    <div class="program"><details class="day">
+<summary class="day-h">
+  <span class="day-n">J5</span>
+  <span class="day-meta"><span class="day-d">Mardi 4 août</span><span class="day-ti">vers Arenal — arrivée en douceur</span></span>
+  <span class="day-tag t-transit">Transfert</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">7h</div><div class="slot-x"><b>Départ en bateau</b> de Tortuguero, puis navette privée vers Arenal (~4h30 à 5h au total).</div></div><div class="slot"><div class="slot-t">11h30</div><div class="slot-x"><b>Arrivée au Nayara Tented Camp</b> — installation dans la tente, vue sur le volcan. Déjeuner sur place.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Rien d'imposé après le transfert. Découverte tranquille du lodge, première baignade dans les sources thermales du Nayara au crépuscule. Repos.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J6</span>
+  <span class="day-meta"><span class="day-d">Mercredi 5 août</span><span class="day-ti">Tyrolienne dans la canopée</span></span>
+  <span class="day-tag t-active">Active</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">8h30</div><div class="slot-x"><b>Petit-déjeuner tranquille</b> — et si le ciel est dégagé, vue sur le volcan. Pas besoin de se presser.</div></div><div class="slot"><div class="slot-t">9h30</div><div class="slot-x"><b>Tyrolienne (Sky Adventures Arenal)</b> — 1h30 au-dessus de la forêt, vue sur le volcan. <span class="tip">Le vrai critère pour un enfant, c'est le <b>poids minimum</b> : selon les sources, il faut compter environ <b>32 kg</b> (un enfant trop léger risque de s'arrêter au milieu du câble). À 7 ans, Elio sera probablement en dessous, donc l'éligibilité n'est pas garantie et se décide souvent à la pesée, sur place. Les seuils varient et le moins de 13 ans doit de toute façon être accompagné d'un adulte : <b>vérifiez directement avec Sky Adventures avant de réserver</b> (<a href="https://skyadventures.travel/ziplines/" target="_blank" rel="noopener">skyadventures.travel</a>). À défaut, repli sur le tram + les ponts suspendus, accessibles à tous.</span></div></div><div class="slot"><div class="slot-t">11h30</div><div class="slot-x"><b>Ponts suspendus sur le même site</b> — promenade au niveau des cimes, paresseux et oiseaux. S'enchaîne naturellement avec la tyrolienne (même lieu).</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Retour au lodge, déjeuner, repos. Pluie de l'après-midi — tente avec vue sur le volcan, ou sources chaudes sous la pluie.</div></div><div class="slot"><div class="slot-t">Soir</div><div class="slot-x"><b>Sources thermales du soir</b> — piscines naturelles éclairées, volcan en toile de fond.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J7</span>
+  <span class="day-meta"><span class="day-d">Jeudi 6 août</span><span class="day-ti">Cascade de La Fortuna · Transfert au Tabacón</span></span>
+  <span class="day-tag t-rest">Calme</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">9h</div><div class="slot-x"><b>Cascade de La Fortuna en matinée</b> — chute de 70m dans une vasque émeraude, baignade possible au pied. <span class="tip">~500 marches à descendre puis remonter : prévoir de l'eau, faisable pour Elio mais ça grimpe au retour. Entrée ~18$.</span></div></div><div class="slot"><div class="slot-t">Midi</div><div class="slot-x"><b>Transfert taxi vers le Tabacón</b> (15 min). Check-in à la suite familiale.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Découverte tranquille des jardins thermaux du Tabacón — 18 bassins naturels, cascades volcaniques, swim-up bar. Pas d'activité imposée.</div></div><div class="slot"><div class="slot-t">Soir</div><div class="slot-x"><b>Baignade nocturne dans la rivière thermale</b> chaude, au cœur des jardins — une expérience marquante du séjour. <span class="tip">Le volcan ne rougeoie plus la nuit, mais l'eau fumante dans le noir suffit à l'ambiance.</span></div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J8</span>
+  <span class="day-meta"><span class="day-d">Vendredi 7 août</span><span class="day-ti">Rafting famille OU journée détente</span></span>
+  <span class="day-tag t-active">Active</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">Matin</div><div class="slot-x"><b>Rafting sur la rivière Balsa</b> (~3h avec transferts) — rapides classe II–III, encadrés, accessibles dès 5 ans. À reconfirmer très près de la date : en août, les pluies peuvent gonfler la rivière et rendre la descente moins adaptée à un enfant (l'opérateur ajuste ou propose un repli). Les opérateurs récupèrent au lodge. <span class="tip">Option à confirmer selon l'envie : si Elio a eu son compte de sensations avec la tyrolienne, cette demi-journée peut devenir détente pure.</span></div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Sources thermales, repos, ou courte visite du village de La Fortuna (glaces, artisanat). Dernier soir à Arenal — bagages pour le lendemain.</div></div></div>
+</details></div>
+    <div class="opts">
+      <div class="opts-h">Options · à la carte</div>
+      <div class="opts-s">Arenal déborde de faune accessible — mais inutile de tout faire : <b>choisissez-en 1 ou 2</b>. Le safari float fait un peu doublon avec les pirogues de Tortuguero, à garder en tête. Prix par adulte, enfant 5–10 ans souvent à moitié prix.</div>
+      <div class="opt"><div class="opt-ic">🦥</div><div class="opt-b"><div class="opt-n">Bogarín Trail — sentier aux paresseux<span class="opt-tag kid">fun enfant</span></div><div class="opt-d">LA valeur sûre pour voir des paresseux (jusqu'à 6 en une visite avec guide !), à 5 min du village. Sentier plat, ~2h, idéal pour Elio. Aussi toucans, caïmans, grenouilles.</div></div><div class="opt-p">~50 $ / 25 $ enf.</div></div><div class="opt"><div class="opt-ic">🦋</div><div class="opt-b"><div class="opt-n">Ecocentro Danaus<span class="opt-tag kid">fun enfant</span></div><div class="opt-d">Petite réserve familiale : boucle facile de 45 min, jardin aux papillons, mare aux grenouilles venimeuses, paresseux. Parfait pour une demi-journée douce.</div></div><div class="opt-p">~25 $</div></div><div class="opt"><div class="opt-ic">🐸</div><div class="opt-b"><div class="opt-n">Night walk — la forêt après la tombée du jour<span class="opt-tag">nature</span></div><div class="opt-d">Rainettes aux yeux rouges, kinkajous, tarentules. ~2h à la lampe. (Mistico interdit aux -10 ans, mais Ecocentro Danaus accepte les enfants.)</div></div><div class="opt-p">~45 $</div></div><div class="opt"><div class="opt-ic">🛶</div><div class="opt-b"><div class="opt-n">Safari float sur le Río Peñas Blancas<span class="opt-tag">nature</span></div><div class="opt-d">Descente tranquille en radeau (sans rapides), pensée pour observer singes, caïmans, oiseaux. Calme et familial — l'alternative douce au rafting.</div></div><div class="opt-p">~55 $</div></div><div class="opt"><div class="opt-ic">🐴</div><div class="opt-b"><div class="opt-n">Balade à cheval avec vue volcan<span class="opt-tag">nature</span></div><div class="opt-d">À travers fincas et forêt, vues sur l'Arenal. Demi-journée, accessible débutants.</div></div><div class="opt-p">~55 $</div></div><div class="opt"><div class="opt-ic">🍫</div><div class="opt-b"><div class="opt-n">Tour cacao & café (Don Olivo / Don Jorge)<span class="opt-tag rain">par temps de pluie</span></div><div class="opt-d">Finca familiale à 10 min : de la cabosse au chocolat, dégustation. Ludique pour Elio, et abrité. Souvent couplé avec la canne à sucre.</div></div><div class="opt-p">~30 $</div></div><div class="opt"><div class="opt-ic">🌋</div><div class="opt-b"><div class="opt-n">Sentier 1968 — coulée de lave du volcan<span class="opt-tag">nature</span></div><div class="opt-d">Marche sur l'ancienne coulée de l'éruption de 1968, vue rapprochée sur le cône. Sentier facile, panoramas superbes par temps clair.</div></div><div class="opt-p">~24 $</div></div>
+    </div>
+    <div class="lodge"><div class="lodge-l">2 nuits · mardi 4 août → jeudi 6 août <span class="badge-urgent">URGENT — 1 tente restante</span></div><div class="lodge-n">Nayara Tented Camp</div><div class="lodge-d">Tentes de luxe 157m² en altitude, vue sur le volcan. Piscine privée à débordement. Condé Nast Traveler 2026. Accès aux piscines et restaurants Nayara voisins.</div><a class="lodge-link" href="https://nayaratentedcamp.com" target="_blank" rel="noopener">Site officiel <span aria-hidden="true">→</span></a></div><div class="lodge"><div class="lodge-l">2 nuits · jeudi 6 août → samedi 8 août <span class="badge-urgent">URGENT — 1 suite restante</span></div><div class="lodge-n">Tabacón Thermal Resort &amp; Spa</div><div class="lodge-d">Rivière thermale volcanique naturelle (22°–38°C) traversant les jardins. Suite familiale King 80m², 18 bassins naturels, swim-up bar.</div><a class="lodge-link" href="https://www.tabacon.com" target="_blank" rel="noopener">Site officiel <span aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="leg"><span class="leg-dot"></span><span class="leg-txt">Navette · ~5h–5h30 (arrêt crocodiles)</span></div>
+</section>
+<section class="etape" data-world="manuel" style="--ac:#e8924a;--ink:#10394a;--deep:#1c6e8c;--soft:#e7f1f4">
+  <div class="etape-band">
+    <div class="node"><span>3</span></div>
+    <div class="etape-head">
+      <div class="etape-k">Étape 3</div>
+      <h2 class="etape-t">Manuel Antonio</h2>
+      <div class="etape-s">Parc national, plages et sorties baleines, côté Pacifique</div>
+    </div>
+  </div>
+  <div class="etape-inner">
+    <figure class="etape-photo"><img src="https://eandrieu.github.io/costa-rica-recap/images/manuel-antonio-plage.jpg" alt="Plage et jungle de Manuel Antonio sur la côte Pacifique" loading="lazy"><figcaption>La côte de Manuel Antonio, jungle et Pacifique</figcaption></figure>
+    <p class="etape-intro">Dernière étape, côté Pacifique. Manuel Antonio réunit un petit parc national très riche en animaux (paresseux, singes, iguanes) et des plages calmes, le tout sur des sentiers faciles. Au large, août correspond au passage des baleines à bosse, qu'on peut aller observer lors d'une sortie en mer le matin. Entre le parc, la plage et la piscine, c'est l'étape la plus tranquille : quatre nuits pour profiter sans courir avant le retour.</p>
+    <div class="transit"><div class="transit-h">Navette partagée depuis Arenal — compter 5h à 5h30 au total</div><div class="transit-b">Trajet 100% routier (pas de bateau cette fois), ~220 km :<br/>
+    • <b>~2h</b> de route sinueuse Arenal → San Ramón, puis descente vers la côte<br/>
+    • <b>arrêt ~20 min</b> au pont de Tárcoles, à mi-chemin : des dizaines de crocodiles géants dans la rivière. Elio va halluciner. Restos et toilettes sur place.<br/>
+    • <b>~2h30</b> jusqu'à Manuel Antonio<br/>
+    C'est le plus long transfert du séjour — l'arrêt crocodiles le coupe utilement.</div></div>
+    <div class="wx-row"><div class="wx"><div class="wx-i">🌡</div><div class="wx-v">23–30°C</div><div class="wx-l">Températures</div></div><div class="wx"><div class="wx-i">🌧</div><div class="wx-v">~18j/mois</div><div class="wx-l">Jours de pluie</div></div><div class="wx"><div class="wx-i">☀</div><div class="wx-v">~7h/jour</div><div class="wx-l">Soleil</div></div><div class="wx"><div class="wx-i">🐋</div><div class="wx-v">Pic</div><div class="wx-l">Baleines</div></div></div>
+    <div class="wx-note">Août = l'un des meilleurs mois pour le Pacifique central, moins pluvieux que juillet. Matins ensoleillés, averses courtes l'après-midi. Mer calme. Pic des baleines à bosse (migration hémisphère sud).</div>
+    <div class="fauna"><span class="fa">🐒 Singes capucins (sur la plage)</span><span class="fa">🐒 Singes écureuils</span><span class="fa">🐒 Singes hurleurs</span><span class="fa">🦥 Paresseux</span><span class="fa">🦜 Aras écarlates</span><span class="fa">🐋 Baleines à bosse (pic)</span><span class="fa">🐬 Dauphins</span><span class="fa">🐟 Poissons tropicaux</span></div>
+    <div class="marine"><div class="marine-title">🤿 Snorkeling &amp; vie marine — la vérité</div>
+<p>L'eau de Manuel Antonio est <b>chaude (28°C), turquoise en surface et la baie est abritée</b> des courants : parfait et sûr pour une baignade avec Elio. Mais soyons honnêtes sur les fonds : <b>ce n'est pas un récif corallien à la Bora Bora</b>, et en saison verte la <b>visibilité sous l'eau est variable</b>, parfois faible après une grosse pluie. Le snorkeling est donc un <b>bonus agréable, pas le clou du séjour</b>.</p>
+<p>Le vrai joyau aquatique du voyage, c'est l'<b>excursion baleines</b> — quasi garantie en août. Sous l'eau, voici ce qu'on peut raisonnablement espérer voir (probabilité d'observation lors d'une sortie snorkeling, par bonne visibilité) :</p>
+<div class="sp"><span>🐠 Poissons de roche colorés (sergents-majors, demoiselles)</span><span class="pct">très probable</span></div>
+<div class="sp"><span>🐟 Bancs de carangues &amp; snappers autour des rochers</span><span class="pct">~50%</span></div>
+<div class="sp"><span>🐡 Poisson-globe, poisson-perroquet</span><span class="pct">~30%</span></div>
+<p style="margin-top:9px; font-size:.8em; color:#5a6a72;">Les tortues marines, raies pastenagues et anguilles sont possibles mais restent occasionnelles (sous 20% en snorkeling) — on ne les compte donc pas comme attendues. Pour les gros animaux, c'est la sortie bateau qui les offre.</p></div>
+    <div class="sec-k">Jour par jour</div>
+    <div class="program"><details class="day">
+<summary class="day-h">
+  <span class="day-n">J9</span>
+  <span class="day-meta"><span class="day-d">Samedi 8 août</span><span class="day-ti">· Crocodiles de Tárcoles</span></span>
+  <span class="day-tag t-transit">Transfert</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">7h</div><div class="slot-x"><b>Navette depuis le Tabacón</b> vers la côte Pacifique.</div></div><div class="slot"><div class="slot-t">9h30</div><div class="slot-x"><b>Arrêt pont de Tárcoles</b> — 20 min, crocodiles de plus de 4m depuis le pont. <span class="tip">Appareil photo prêt.</span></div></div><div class="slot"><div class="slot-t">~13h</div><div class="slot-x"><b>Arrivée au Sí Como No</b> (départ ~7h + ~5h de route + arrêt) — installation, déjeuner tardif vue océan.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Découverte du resort à son rythme — piscines, toboggan, premiers singes depuis les terrasses. Et si le ciel se dégage en soirée, coucher de soleil sur le Pacifique.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J10</span>
+  <span class="day-meta"><span class="day-d">Dimanche 9 août</span><span class="day-ti">Excursion baleines à bosse 🐋</span></span>
+  <span class="day-tag t-active">Active</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">6h30</div><div class="slot-x"><b>Sortie bateau baleines à bosse</b> (~3h, départ tôt : mer calme, baleines actives). Août = pic de migration, taux d'observation très élevé (~90%+ en pleine saison). Sauts, jets, nageoires ; dauphins très probables. <span class="tip">Aucune garantie animalière : ce sont des animaux sauvages, et les opérateurs ne remboursent pas l'absence d'observation (seulement météo/annulation). Réserver le matin, pas l'après-midi (pluie).</span></div></div><div class="slot"><div class="slot-t">9h</div><div class="slot-x"><b>Snorkeling au large (selon visibilité)</b> — eau chaude à 28°C, bancs de carangues et snappers autour des rochers. <span class="tip">En saison verte la visibilité est variable, parfois faible après la pluie : c'est un bonus, pas la star de la sortie.</span></div></div><div class="slot"><div class="slot-t">11h30</div><div class="slot-x"><b>Retour, déjeuner</b> au resort. <span class="tip">Réserver l'excursion dès l'arrivée — Ocean King ou Bahía Aventuras.</span></div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Piscine et repos — matinée intense, après-midi tranquille.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J11</span>
+  <span class="day-meta"><span class="day-d">Lundi 10 août</span><span class="day-ti">Parc National Manuel Antonio à l'aube</span></span>
+  <span class="day-tag t-active">Active</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">7h</div><div class="slot-x"><b>Parc National dès l'ouverture (7h)</b> — pour les animaux actifs et éviter la chaleur et la foule. <span class="tip">Crucial : le parc est FERMÉ LE MARDI. Billets horodatés limités (~2 500/jour), à acheter à l'avance UNIQUEMENT sur le site officiel SINAC — rien n'est vendu à l'entrée. ~16$ adulte, ~5$ Elio.</span></div></div><div class="slot"><div class="slot-t">8h</div><div class="slot-x"><b>Singes capucins sur la plage</b> — très proches, malins. Sacs fermés ! Singes écureuils et paresseux dans les arbres.</div></div><div class="slot"><div class="slot-t">9h30</div><div class="slot-x"><b>Baignade en playa Manuel Antonio</b> — une des plus belles plages du pays, eau turquoise, jungle autour.</div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Retour au resort. Pluie de l'après-midi — jardin aux papillons du Sí Como No, piscine couverte, repos.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J12</span>
+  <span class="day-meta"><span class="day-d">Mardi 11 août</span><span class="day-ti">Journée libre — plage, kayak ou rien</span></span>
+  <span class="day-tag t-rest">Calme</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">Matin</div><div class="slot-x">Au choix selon l'énergie : kayak de mer le long de la côte (demi-journée, dauphins possibles), ou simplement plage et piscine. <span class="tip">Bien tombé : le parc national est fermé le mardi, donc rien à manquer côté parc aujourd'hui.</span></div></div><div class="slot"><div class="slot-t">PM</div><div class="slot-x">Souvenirs à Quepos (café, chocolat, artisanat) si l'envie. Sinon farniente.</div></div><div class="slot"><div class="slot-t">Soir</div><div class="slot-x"><b>Dernier dîner vue océan</b> — célébrer 13 nuits inoubliables. Bagages pour le départ du lendemain.</div></div></div>
+</details><details class="day">
+<summary class="day-h">
+  <span class="day-n">J13</span>
+  <span class="day-meta"><span class="day-d">Mercredi 12 août</span><span class="day-ti">Retour Paris — vol du soir</span></span>
+  <span class="day-tag t-transit">Transfert</span>
+  <span class="day-chev" aria-hidden="true"></span>
+</summary>
+<div class="day-body"><div class="slot"><div class="slot-t">Matin</div><div class="slot-x">Dernier matin libre — piscine ou dernière promenade dans les jardins. Profiter jusqu'au bout.</div></div><div class="slot"><div class="slot-t">14h</div><div class="slot-x"><b>Navette Manuel Antonio → San José</b> (~3h).</div></div><div class="slot"><div class="slot-t">17h</div><div class="slot-x"><b>Aéroport Juan Santamaría</b> — vol Air France AF427 départ 19h05.</div></div><div class="slot"><div class="slot-t">+1</div><div class="slot-x"><b>Arrivée Paris CDG 13h40</b> le 13 août — des photos plein les yeux.</div></div></div>
+</details></div>
+    <div class="opts">
+      <div class="opts-h">Options · à la carte</div>
+      <div class="opts-s">Pour la journée libre (J12) ou un après-midi de pluie — <b>une seule de ces activités tient dans une demi-journée</b>, pas besoin d'enchaîner. Prix indicatifs par adulte.</div>
+      <div class="opt"><div class="opt-ic">🦥</div><div class="opt-b"><div class="opt-n">Kids Saving the Rainforest — centre de secours<span class="opt-tag kid">fun enfant</span></div><div class="opt-d">Centre de sauvetage à Quepos (singes, paresseux, oiseaux sauvés). Pédagogique et éthique : chaque entrée finance les soins. Coup de cœur des familles avec enfants de l'âge d'Elio. Route bosselée, prévoir taxi adapté.</div></div><div class="opt-p">~40 $</div></div><div class="opt"><div class="opt-ic">⛵</div><div class="opt-b"><div class="opt-n">Tour en catamaran — coucher de soleil & dauphins<span class="opt-tag">nature</span></div><div class="opt-d">Demi-journée sur l'eau, snorkeling, dauphins, parfois baleines. Coucher de soleil sur le Pacifique en option. Alternative ou complément à l'excursion baleines.</div></div><div class="opt-p">~75–90 $</div></div><div class="opt"><div class="opt-ic">🍫</div><div class="opt-b"><div class="opt-n">Chocolate & coffee tour<span class="opt-tag rain">par temps de pluie</span></div><div class="opt-d">Plantation près de Quepos : cacao, café, canne à sucre, dégustation. Guides qui repèrent aussi les singes en chemin. Ludique et abrité.</div></div><div class="opt-p">~45 $</div></div><div class="opt"><div class="opt-ic">🦋</div><div class="opt-b"><div class="opt-n">Jardin aux papillons du Sí Como No<span class="opt-tag rain">sur place</span></div><div class="opt-d">Vivarium dans le resort, des dizaines d'espèces. Parfait 30–45 min pendant une averse, sans sortir de l'hôtel.</div></div><div class="opt-p">inclus</div></div><div class="opt"><div class="opt-ic">🌳</div><div class="opt-b"><div class="opt-n">2e entrée au Parc Manuel Antonio<span class="opt-tag">nature</span></div><div class="opt-d">Y retourner un autre matin sous un angle différent : on voit rarement tout en une fois. Singes, paresseux, plages.</div></div><div class="opt-p">~18 $</div></div><div class="opt"><div class="opt-ic">🏄</div><div class="opt-b"><div class="opt-n">Initiation surf à Playa Espadilla<span class="opt-tag kid">fun enfant</span></div><div class="opt-d">Vagues douces et école sur la plage principale. Première leçon accessible dès 7 ans avec moniteur.</div></div><div class="opt-p">~50 $</div></div>
+    </div>
+    <div class="lodge"><div class="lodge-l">4 nuits · samedi 8 août → check-out mercredi 12 août (jour du vol retour) <span class="badge-urgent">NON REMBOURSABLE</span></div><div class="lodge-n">Sí Como No Resort &amp; Wildlife Refuge</div><div class="lodge-d">Resort dans la jungle, vue panoramique sur l'océan. Chambre Deluxe balcon vue mer, 2 piscines dont une avec toboggan. Singes et paresseux depuis l'hôtel. Petit-déj et réduction 10% F&B inclus.</div><a class="lodge-link" href="https://www.sicomono.com" target="_blank" rel="noopener">Site officiel <span aria-hidden="true">→</span></a></div>
+  </div>
+  
+</section>
+
+  
+<section class="etape gateway" data-world="gateway" style="--ac:#c9a24b;--ink:#14241c;--deep:#24463a;--soft:#eef0e7">
+  <div class="leg leg-top"><span class="leg-dot"></span><span class="leg-txt">Et il faut rentrer…</span></div>
+  <div class="etape-band">
+    <div class="node node-flag"><span>✦</span></div>
+    <div class="etape-head">
+      <div class="etape-k">Le retour</div>
+      <h2 class="etape-t">Manuel Antonio → Paris</h2>
+      <div class="etape-s">Dernière matinée sur la côte, puis le trajet retour</div>
+    </div>
+  </div>
+  <div class="etape-inner">
+    <p class="etape-intro">Le voyage se termine sur la côte Pacifique. Après une dernière matinée libre (baignade, plage ou jardins du resort), il faut reprendre la route : environ 3 heures de navette jusqu'à San José, puis le vol de nuit vers Paris. Treize nuits qui se referment, avec de quoi laisser de solides souvenirs à toute la famille.</p>
+    <div class="program"><div class="day-flat"><div class="slot"><div class="slot-t">Matin</div><div class="slot-x"><b>Dernier matin libre</b> à Manuel Antonio — piscine, plage ou jardins du Sí Como No. Profiter jusqu'au bout, sans précipitation.</div></div><div class="slot"><div class="slot-t">Midi</div><div class="slot-x"><b>Navette Manuel Antonio → San José</b> (~3h, 100% route). Direction l'aéroport Juan Santamaría.</div></div><div class="slot"><div class="slot-t">19h05</div><div class="slot-x"><b>Vol Air France AF427, direct</b> — San José 19h05 → Paris CDG 13h40 le lendemain (~10h35 de vol, un peu plus court qu'à l'aller grâce aux vents). Vol de nuit : prévoir de dormir.</div></div><div class="slot"><div class="slot-t">J+1</div><div class="slot-x"><b>Arrivée à Paris</b> le 13 août à 13h40. Avec 7h de décalage, garder les 13–14 août tranquilles pour récupérer en douceur.</div></div></div></div>
+  </div>
+</section>
+
+  <section class="block">
+    <div class="kicker">Budget estimé</div>
+    <div class="budget"><div class="b-row "><span>✈ Vols Air France CDG ↔ SJO (3 pers.)</span><span>3 949 €</span></div><div class="b-row "><span>🌿 Peace Lodge — 1 nuit</span><span>728 €</span></div><div class="b-row "><span>🐢 Tortuga Lodge — 4 nuits</span><span>~3 000 €</span></div><div class="b-row "><span>🏕 Nayara Tented Camp — 2 nuits</span><span>~2 435 €</span></div><div class="b-row "><span>♨️ Tabacón Thermal Resort — 2 nuits</span><span>~1 266 €</span></div><div class="b-row "><span>🏖 Sí Como No Resort — 4 nuits</span><span>~1 260 €</span></div><div class="b-row "><span>🚐 Transferts privés inter-étapes (bateaux + navettes)</span><span>~700 €</span></div><div class="b-row "><span>🪂 Activités à sensations (tyrolienne, rafting, baleines) × 3 pers.</span><span>~1 100 €</span></div><div class="b-row "><span>🦥 Activités nature au choix (Bogarín, centre secours, etc.)</span><span>~700 €</span></div><div class="b-row "><span>🍽 Déjeuners & dîners en lodges haut de gamme (petits-déj inclus) — 13 j × 3 pers.</span><span>~2 300 €</span></div><div class="b-row "><span>💵 Pourboires guides & chauffeurs + extras</span><span>~350 €</span></div><div class="b-row budget-total"><span>Total estimé tout compris</span><span>~17 800 €</span></div></div>
+    <div class="budget-note">Ordre de grandeur réaliste pour 3 personnes, hors shopping et imprévus, d'après les tarifs réels relevés. Les nuits d'hôtel et les vols (~12 600 €) sont le socle fixe. La restauration est estimée haut : dans des lodges haut de gamme, souvent sans alternative à proximité (Tortuguero, Arenal), comptez 70–90 $ par adulte et par jour, petits-déjeuners inclus mais déjeuners, dîners et boissons à payer (le Nayara, par exemple, affiche déjeuner et dîner à 129 € chacun).</div>
+  </section>
+
+  <section class="block">
+    <div class="kicker">À savoir avant de partir</div>
+    <div class="prac-wrap"><details class="prac"><summary class="prac-q">Santé & vaccins<span class="prac-chev"></span></summary><div class="prac-a"><b>À anticiper avec votre médecin 4 à 6 semaines avant le départ.</b>
+      <ul>
+        <li><b>Paludisme :</b> risque faible mais présent côté Caraïbe (Tortuguero). Traitement préventif à évoquer selon le profil d'Elio — avis médical indispensable.</li>
+        <li><b>Fièvre jaune :</b> non obligatoire depuis la France, mais vaccinations universelles (DTP, rougeole) à jour recommandées.</li>
+        <li><b>Sur place :</b> eau en bouteille, pas de souci sanitaire majeur. Pas de distributeur à Tortuguero — prévoir du cash (dollars/colones) avant d'y aller.</li>
+      </ul></div></details><details class="prac"><summary class="prac-q">À mettre dans la valise<span class="prac-chev"></span></summary><div class="prac-a"><ul>
+        <li><b>Anti-moustiques puissant</b> (avec DEET) — indispensable, surtout Tortuguero au crépuscule.</li>
+        <li><b>Crème solaire haute protection</b> + chapeau — l'indice UV est très élevé même par temps couvert.</li>
+        <li><b>Vêtements légers à manches longues</b> et <b>chaussures fermées</b> pour la jungle et les sentiers.</li>
+        <li><b>Imperméable léger / poncho</b> plutôt qu'un parapluie — plus pratique en forêt.</li>
+        <li><b>Lampe frontale à lumière rouge</b> pour la sortie tortues (lumière blanche interdite).</li>
+        <li><b>Sandales de marche</b> qui sèchent vite, jumelles, sac étanche pour les sorties bateau.</li>
+        <li><b>Vêtements sombres</b> pour l'observation des tortues (consigne stricte).</li>
+      </ul></div></details><details class="prac"><summary class="prac-q">Pourboires & argent<span class="prac-chev"></span></summary><div class="prac-a">Le pourboire fait partie des usages au Costa Rica. Comptez <b>2–5 $ par personne</b> pour un guide de sortie, <b>5–10 $</b> pour un chauffeur de transfert privé, et l'arrondi habituel au restaurant (un service de 10% est souvent déjà inclus). Prévoir du <b>liquide en dollars</b> en petites coupures — utile partout, indispensable à Tortuguero où il n'y a pas de distributeur.</div></details><details class="prac"><summary class="prac-q">Assurance & réservations non remboursables<span class="prac-chev"></span></summary><div class="prac-a"><b>Point important :</b> plusieurs hébergements (Tortuga Lodge, Sí Como No, vols) sont non remboursables. Une <b>assurance voyage avec annulation</b> est vivement conseillée — elle couvre maladie, retard, ou imprévu familial, et représente une fraction du coût du voyage. Vérifiez aussi que votre carte bancaire n'offre pas déjà une couverture (souvent partielle). Le Nayara, lui, est annulable gratuitement jusqu'à 30 j avant.</div></details><details class="prac"><summary class="prac-q">Le retour : prévoir de récupérer<span class="prac-chev"></span></summary><div class="prac-a">Le vol du 12 août part à 19h05 et arrive à Paris le 13 à 13h40 — c'est une <b>nuit en avion avec 7h de décalage</b>. La journée du 13 sera floue, et le contrecoup peut durer 1 à 2 jours. <b>Ne calez rien d'important les 14–15 août</b> : prévoyez un retour en douceur, surtout pour Elio.</div></details><details class="prac"><summary class="prac-q">Repas & vie sur place<span class="prac-chev"></span></summary><div class="prac-a">Les petits-déjeuners sont inclus partout. À <b>Tortuguero</b> vous êtes captifs du lodge (pas de restaurant extérieur accessible) — demi-pension ou pension complète à prévoir. À <b>Arenal</b> et <b>Manuel Antonio</b>, restaurants variés accessibles (de la soda locale à 8 $ au resto vue mer à 40 $). Un repas tourne autour de 15–25 $ par adulte dans un restaurant courant, mais bien plus dans les restaurants des lodges haut de gamme où vous dînerez souvent (facilement 35–50 $ par adulte le soir, boissons en plus). Comptez plutôt 70–90 $ par adulte et par jour pour déjeuner et dîner sur l'ensemble du séjour.</div></details></div>
+  </section>
+
+  <section class="block">
+    <div class="kicker">À réserver maintenant</div>
+    <p class="book-lead">L'urgence vient de la disponibilité, pas des conditions d'annulation : ces hébergements n'ont plus qu'une seule option restante et sont à réserver sans attendre, au même niveau. Que certains soient annulables gratuitement ne change rien à l'urgence — c'est au contraire une raison de les sécuriser tout de suite.</p>
+    <div class="book-group">
+      <div class="book-group-h alert">À réserver maintenant — disponibilité critique</div>
+      <div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Tortuga Lodge</strong> — tortugalodge.com · 1 suite restante · non remboursable (engagement ferme) <a class="book-link" href="https://www.tortugalodge.com" target="_blank" rel="noopener">site officiel ↗</a></div></div><div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Sí Como No Resort</strong> — sicomono.com · non remboursable (engagement ferme) <a class="book-link" href="https://www.sicomono.com" target="_blank" rel="noopener">site officiel ↗</a></div></div><div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Nayara Tented Camp</strong> — nayaratentedcamp.com · 1 tente restante · annulable gratuitement jusqu'au 5 juillet (à sécuriser sans risque) <a class="book-link" href="https://nayaratentedcamp.com" target="_blank" rel="noopener">site officiel ↗</a></div></div><div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Tabacón Thermal Resort</strong> — tabacon.com · 1 suite restante · annulable gratuitement jusqu'au 7 juillet (à sécuriser sans risque) <a class="book-link" href="https://www.tabacon.com" target="_blank" rel="noopener">site officiel ↗</a></div></div><div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Peace Lodge</strong> — waterfallgardens.com · 1 nuit d'arrivée · annulable gratuitement jusqu'au 16 juillet <a class="book-link" href="https://waterfallgardens.com" target="_blank" rel="noopener">site officiel ↗</a></div></div><div class="book-item"><span class="book-dot urgent"></span><div class="book-x"><strong>Vols Air France AF428 / AF427</strong> — airfrance.fr · 30 juillet aller, 12 août retour · soute incluse <a class="book-link" href="https://www.airfrance.fr" target="_blank" rel="noopener">site officiel ↗</a></div></div>
+    </div>
+    <div class="book-group">
+      <div class="book-group-h">À caler ensuite</div>
+      <div class="book-item"><span class="book-dot"></span><div class="book-x"><strong>Activités sur place</strong> — tyrolienne / ponts suspendus (à réserver à l'avance), sortie baleines, rafting, billets du parc Manuel Antonio (site SINAC, parc fermé le mardi)</div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-mark">Pura Vida</div>
+  <div class="foot-sub">Costa Rica · 30 juillet – 12 août 2026</div>
+</footer>
+
+<script>
+// Scroll reveal for sections (respects reduced motion via CSS class gating)
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  var els = document.querySelectorAll('.block, .etape');
+  els.forEach(function(el){ el.classList.add('reveal'); });
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); }); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+</script>
+</body>
+</html>
